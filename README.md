@@ -9,7 +9,6 @@ commonlibs -> init  	初始化类库引入类包
 		   -> ccb  		cocosbuilder UI相关封装
 					   CCBCell  	cocosbuild 元素
 					   CCBPopUpViewController:CCBCell	cocosbuilder弹窗
-
 		   ->constant   各类常量定义
 		   ->csvsupport  自写csv 读表支持
 		   ->data		一些数据模型
