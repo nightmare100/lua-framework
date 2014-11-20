@@ -2,6 +2,9 @@ lua-framework
 =============
 
 lua framework for cocos
+
+
+
 commonlibs -> init  	初始化类库引入类包	
 		   -> ccb  		cocosbuilder UI相关封装
 					   CCBCell  	cocosbuild 元素
