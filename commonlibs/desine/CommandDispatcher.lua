@@ -19,6 +19,7 @@ function CommandDispatcher:execute(cmd, parms)
 	end
 end
 
+--移除监听 (重写基类方法)
 function CommandDispatcher:removeEventListener(eventName, listener)
     eventName = string.upper(eventName)
     if self.listeners[eventName] == nil then return end
@@ -39,6 +40,7 @@ function CommandDispatcher:removeEventListener(eventName, listener)
     if #listenersForEvent == 0 then self.listeners[eventName] = nil end
 end
 
+--派发器自身的实现  派发事件
 function CommandDispatcher:dispatchEvent(event)
     event.name = string.upper(event.name)
     local eventName = event.name
@@ -59,6 +61,7 @@ function CommandDispatcher:dispatchEvent(event)
     end
 end
 
+--派发器自身的实现 添加监听
 function CommandDispatcher:addEventListener(eventName, listener, key)
     eventName = string.upper(eventName)
     if self.listeners[eventName] == nil then

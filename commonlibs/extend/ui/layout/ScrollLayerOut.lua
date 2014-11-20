@@ -3,7 +3,7 @@
 
 ScrollLayerOut = {};
 
-
+--滚动布局 扩展 可以使任何layerout 变为滚动布局
 function ScrollLayerOut.extend(layout, proity, size, needScrollBar)
 	layout.dragThreshold = 60
 	layout.scrollSize = size;

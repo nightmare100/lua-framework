@@ -1,3 +1,4 @@
+--物品结构
 local item = class("Item")
 
 function item:ctor(id)

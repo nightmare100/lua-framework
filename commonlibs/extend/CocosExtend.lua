@@ -1,3 +1,4 @@
+--对cocos 节点功能扩展
 require("commonlibs.extend.event.ExtendEvent")
 require("commonlibs.extend.event.ViewEvent")
 
@@ -77,6 +78,10 @@ function CCNodeExtend:getHeight(useCascadeBoundingBox)
 	end
 end
 
+--[[
+	以上代码简写
+]]
+
 --for label text
 function CCNodeExtend:customAlign( x, y)
 	if self.cuAlign == ui.TEXT_ALIGN_LEFT then
@@ -86,23 +91,6 @@ function CCNodeExtend:customAlign( x, y)
     else
         self:setPosition(x, y)
     end
-end
-
-
---子元件一起ACTION
-function CCNodeExtend:runActionWithChild(action)
-	self:runAction(action);
-	local arr = self:getChildren();
-	if arr then
-		print(arr:count());
-	end
-	if arr and arr:count() > 0 then
-	
-		for i = 0, arr:count() - 1 do
-			local node = tolua.cast(arr:objectAtIndex(i), "CCNode");
-			node:runAction(action:copy());
-		end
-	end
 end
 
 --修改layer扩展 保证多点触摸 只有一个可操作layer受响应

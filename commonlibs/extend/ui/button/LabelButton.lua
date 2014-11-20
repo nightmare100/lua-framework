@@ -1,4 +1,4 @@
---标签按钮
+--标签按钮 支持文本
 local LabelButton = class("LabelButton", function()
 	return display.newNode();
 end)

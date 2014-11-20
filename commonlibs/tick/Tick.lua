@@ -18,7 +18,7 @@ function tick:ctor()
 	self.tickMap = {}
 end
 
---timeout s
+--添加一个单次定时
 function tick:addTimeout(callback, timeout, key)
 	key = key and key or "func" .. math.random(10000);
 	local func = function(dt)
@@ -32,7 +32,7 @@ function tick:addTimeout(callback, timeout, key)
 	end
 end
 
---interval s
+--添加一个永久循环定时
 function tick:addInterval(callback, interval, key)
 	if self.isPause then
 		self.tickMap[key] = {timeout = interval, callback = callback}
@@ -45,6 +45,7 @@ function tick:hasTimeout(key)
 	return self.tickMap[key];
 end
 
+--删除定时器
 function tick:kill(key)
 	if self.tickMap[key] then
 		if self.tickMap[key].key then
@@ -77,6 +78,7 @@ function tick:unpause()
 	end
 end
 
+--清除定时器
 function tick:clear()
 	for k, v in pairs(self.tickMap) do
 		if v.key then

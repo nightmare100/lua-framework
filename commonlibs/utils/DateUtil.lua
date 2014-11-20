@@ -28,6 +28,7 @@ function DateUtil.madeTimeToEFormat(str)
 --	print(os.date("%B") .. "." .. os.date("%d"))
 end
 
+--获取文本事件的 time tick
 function DateUtil.getHoleTimeTick(str)
 	local month = tonumber( string.sub(str, 6, 7) );
 	local date = tonumber( string.sub(str, 9, 10));

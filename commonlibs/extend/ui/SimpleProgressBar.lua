@@ -1,4 +1,4 @@
--- progressbar
+-- progressbar 简易进度条
 
 local progressBar = class("progressBar", function(node, progress)
 	local clipNode = display.newClippingRegionNode(CCRectMake(node:getPositionX() - node:getContentSize().width / 2, node:getPositionY() - node:getContentSize().height / 2, node:getContentSize().width, node:getContentSize().height))
@@ -9,6 +9,7 @@ local progressBar = class("progressBar", function(node, progress)
 	return clipNode;
 end)
 
+--更新进度 (操作剪切区域)
 function progressBar:update(progress)
 	self.progress = progress < 0 and 0 or progress;
 	local rect = self:getClippingRegion();

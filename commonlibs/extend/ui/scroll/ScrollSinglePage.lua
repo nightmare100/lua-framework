@@ -1,4 +1,4 @@
---滚动页面 滚动组建 最新
+--单页滚动组件 可以和 任何NODE通用
 
 local ScrollSinglePage = class("ScrollSinglePage", function(rect)
     if not rect then rect = CCRect(0, 0, 0, 0) end
@@ -13,7 +13,7 @@ ScrollSinglePage.SCROLL_BAR_NONE = "none"
 ScrollSinglePage.SCROLL_VER_ONLY = "ver"
 ScrollSinglePage.SCROLL_HOR_ONLY = "hor"
 
---添加一个面板
+--添加一个面板 node 节点容器 ， includeSpace 是否需要调整 node的偏移位置
 function ScrollSinglePage:addView(node, includeSpace)
 	self.subView = node;
 	self.includeSpace = includeSpace;
@@ -36,6 +36,7 @@ function ScrollSinglePage:resetPosition()
 	self.view:setPosition(self.maxX, self.minY);
 end
 
+--判断滚动最大点 和 最小点
 function ScrollSinglePage:checkSourceRange()
 	self.sourceRect = self.subView:getCascadeBoundingBox(false);
 --	print("x,y" , self.sourceRect.origin.x, self.sourceRect.origin.y)
@@ -60,6 +61,7 @@ function ScrollSinglePage:checkSourceRange()
 	
 end
 
+--当内部 view 变更时 重新设置 滚动区域
 function ScrollSinglePage:onViewChange(evt)
 	transition.stopTarget(self.view);
 	self.isScrolling = false;
@@ -77,6 +79,15 @@ function ScrollSinglePage:onViewChange(evt)
 	self:showScrollBar(false);
 end
 
+--[[
+	构造
+	rect 显示区域 举行
+	proity 触摸优先级
+	disableclipping 是否要根据显示区域剪切
+	barPolice 滚动条显示策略
+	scrollProlice 滚动策略
+	useBackgrond 是否使用背景
+]]
 function ScrollSinglePage:ctor(rect, proity, disableClipping, barPoilce, scrollProlice, useBackGround)
     self.barPolice = barPoilce and barPoilce or ScrollSinglePage.SCROLL_BAR_AUTO;
     self.scrollProlice = scrollProlice and scrollProlice or "both";
@@ -123,6 +134,7 @@ function ScrollSinglePage:ctor(rect, proity, disableClipping, barPoilce, scrollP
     
 end
 
+--初始化滚动条
 function ScrollSinglePage:initScrollBar()
 	if self.barPolice ~= ScrollSinglePage.SCROLL_BAR_NONE then
 		if self.barPolice ~= ScrollSinglePage.SCROLL_VER_ONLY then
@@ -300,6 +312,9 @@ function ScrollSinglePage:onTouchEnded(x, y)
     self.drag = nil
 end
 
+
+
+--检查 是否 这次滚动需要弹性
 function ScrollSinglePage:checkSlide()
 	local slideMinSpeed = 15;
 	if self.drag.disX then
@@ -316,6 +331,7 @@ function ScrollSinglePage:checkSlide()
 	self:showScrollBar(false)
 end
 
+--弹性动画
 function ScrollSinglePage:beginSlide(spd, dir)
 	local dis = spd * 25; --惯性距离
 	local endDis;
@@ -425,7 +441,7 @@ function ScrollSinglePage:onTouch(event, x, y)
     end
 end
 
-
+--设置滚动区域
 function ScrollSinglePage:setContentOffset(x, y)
 
 	if self.view:getPositionX() + x > self.maxX + self.dragThreshold  then
@@ -458,6 +474,7 @@ function ScrollSinglePage:setContentOffset(x, y)
     self:updateScrollBar(self:needHorScrollBar() and progressHor or -1, self:needVerScrollBar() and progressVer or -1);
 end
 
+--更新滚动
 function ScrollSinglePage:updateScroll()
 	local progressHor = (self.maxX - self.view:getPositionX()) / (self.maxX - self.minX)
 	local progressVer = (self.view:getPositionY() - self.minY) / (self.maxY - self.minY)
@@ -465,6 +482,7 @@ function ScrollSinglePage:updateScroll()
     self:updateScrollBar(self:needHorScrollBar() and progressHor or -1, self:needVerScrollBar() and progressVer or -1);
 end
 
+--当界面滚动完时调用
 function ScrollSinglePage:onViewMovComplete()
 	self.isScrolling = false;
 	self:showScrollBar(false)
@@ -472,6 +490,7 @@ function ScrollSinglePage:onViewMovComplete()
 	Tick.getInstance():kill(self:getTickID());
 end
 
+--销毁
 function ScrollSinglePage:onExit()
     self:removeAllEventListeners()
 	Tick.getInstance():kill(self:getTickID());

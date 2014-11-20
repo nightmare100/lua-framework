@@ -1,5 +1,5 @@
 --支持Mousedown事件
-
+--支持长按的 按钮
 local HoldButton = class("HoldButton", UI_PressButton)
 
 function HoldButton:onTouchRightNow()

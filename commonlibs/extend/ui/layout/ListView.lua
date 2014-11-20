@@ -1,4 +1,4 @@
---列表界面
+--列表布局界面
 
 
 local ListView = class("ListView", function()
@@ -8,6 +8,9 @@ end)
 ListView.DIR_VER = "ver"
 ListView.DIR_HOR = "hor"
 
+--[[构造 dir 列表方向 横纵
+	margin 元素之间的间距
+]]
 function ListView:ctor(dir, margin, marginFrame)
 	self.dir = dir;
 	self.margin = margin;
@@ -42,6 +45,7 @@ function ListView:setLayoutMode(cloume, marginh, marginv)
 	self.marginV = marginv;
 end
 
+--触摸时间 抛出 layerout中 被点到的CELL 值内容 等 
 function ListView:onTap(x, y)
 	for i = 1, #self.cells do
 		if self.cells[i]:getCascadeBoundingBox():containsPoint(ccp(x, y)) then
@@ -81,6 +85,7 @@ function ListView:resetPos(clearBonuds)
 	end
 end
 
+--在使用 LayeroutMode 之后 使用这个Api 去添加CELL
 function ListView:addMutleCell(cell)
 	local horIdx = #self.cells % self.cloume
 	local verIdx = math.floor(#self.cells / self.cloume);
@@ -125,6 +130,7 @@ function ListView:addMutleCell(cell)
 	self:dispatchEvent({name = ViewEvent.ON_VIEW_CHANGED})
 end
 
+--默认添加CELL方法
 function ListView:addCell(cell, needAdjust, needSize)
 	if self.isMutle then
 		self:addMutleCell(cell);
@@ -169,6 +175,7 @@ function ListView:addCell(cell, needAdjust, needSize)
 	end
 end
 
+--移除所有 元素
 function ListView:removeAllCell()
 	for i = 1, #self.cells do
 		local cell = self.cells[i]
@@ -181,6 +188,7 @@ function ListView:removeAllCell()
 	self.cells = {};
 end
 
+--销毁
 function ListView:onExit()
 	for i = 1, #self.cells do
 		local cell = self.cells[i]

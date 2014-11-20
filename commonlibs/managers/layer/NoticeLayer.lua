@@ -11,6 +11,7 @@ function NoticeLayer:ctor()
 	self:registerNodeEvent();
 end
 
+--这个曾 根据自身的 子元素数量 来调整 自己的 优先级 从而达到模态窗口的用途。
 function NoticeLayer:enterFrame(dt)
 	local newCount = self:getChildrenCount();
 	if newCount > self.numChildren then

@@ -1,4 +1,5 @@
 --event : onRadioGroupChanged
+--单选按钮组
 
 local RadioGroup = class("RadioGroup", function(radios, dir, margin, defaultIndex)
 	return display.newNode();

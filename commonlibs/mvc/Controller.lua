@@ -1,4 +1,4 @@
-
+--Mason
 local Controller = class("Controller")
 
 --用来注册所有的command类,command是proxy和view之前的桥，用来解耦

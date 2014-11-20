@@ -1,4 +1,4 @@
---物品管理 Model
+--物品管理 Model 除了 包括物品迭代器 还实现观察者 来派发物品变更事件
 
 local ItemManager = class("ItemManager")
 

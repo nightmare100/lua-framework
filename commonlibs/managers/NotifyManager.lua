@@ -48,6 +48,7 @@ function NotifyManager:getNotifyLen(type, name)
 	end
 end
 
+--获取一个类型消息的集合
 function NotifyManager:getNotifyList(type, name)
 	local list = self.notifyMap[type];
 	if (name == nil) then
@@ -114,6 +115,7 @@ function NotifyManager:clear()
 	self.notifyMap[NotifyType.NOTIFY_CHAT] = {};
 end
 
+--消息优先级排序
 function NotifyManager:onCellSort(o1, o2)
 	if o1.proity > o2.proity then
 		return false;

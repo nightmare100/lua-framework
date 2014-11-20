@@ -7,11 +7,13 @@ function CCBPopUp:ctor()
 	CCB_CELL.ctor(self, self.ccbFile, self.ccbCls, self.proity)
 end
 
+--弹窗始终在屏幕中间
 function CCBPopUp:initView()
 	CCB_CELL.initView(self);
 	self.view:setPosition(display.cx, display.cy);
 end
 
+--弹窗公共关闭事件
 function CCBPopUp:addViewListener()
 	self.viewData["onClose"] = handler(self, self.dispose);
 end
@@ -22,11 +24,12 @@ function CCBPopUp:setData(info)
 	self:processData();
 end
 
---处理界面逻辑
+--控制器 拿到Model 之后 可重写此方法 render UI
 function CCBPopUp:processData()
 	
 end
 
+--PopupManager 弹窗管理自动调用
 function CCBPopUp:autoShow()
 	if not self.view:getParent() then
 		local parentNode = (LayerManager and LayerManager.noticeLayer) and LayerManager.noticeLayer or display.getRunningScene()

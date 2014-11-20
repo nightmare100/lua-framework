@@ -1,7 +1,10 @@
+--数学加减 组件 
+
 local NumbericControl = class("NumbericControl", function()
 	return display.newLayer();
 end)
 
+--初始化组件 按钮 样式
 function NumbericControl:ctor(rect,skin, color, minVal, maxVal, default, proity, sound, fontSize)
 	eventDispatcher.extend(self);
 	self:registerNodeEvent();

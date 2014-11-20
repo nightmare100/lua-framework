@@ -15,6 +15,7 @@ function AlertManager:showAlert(tips, callBack, obj)
 	end
 end
 
+--privte 显示系统弹窗队列里下一个窗口
 function AlertManager:showNext()
 	if #self.winLists > 0 then
 		local item = self.winLists[1];
@@ -43,6 +44,7 @@ function AlertManager:showConfirm(tips, onSure, onCancel)
 	end
 end
 
+--清除所有
 function AlertManager:clear()
 	self.winLists = {};
 	self.currentWindow = nil;

@@ -1,3 +1,5 @@
+--滚动的数字文本 
+
 local BaseTTFText = require("commonlibs.extend.ui.BaseTTFLabel");
 local MeterWord = class("MeterWord", function(parmas)
 	return BaseTTFText.new(parmas);
@@ -14,6 +16,7 @@ function MeterWord:onExit()
 	self:reset();
 end
 
+--使文本 在指定的 秒内 滚动到指定的 值
 function MeterWord:meterToNumber(n, sec, sound)
 	self:reset();
 	self.targetNum = n;
@@ -24,6 +27,7 @@ function MeterWord:meterToNumber(n, sec, sound)
 	self.soundID = sound;
 end
 
+--直接显示 目标数字 结束滚动
 function MeterWord:directToTarget()
 	self:reset();
 	if self.targetNum then

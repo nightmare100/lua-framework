@@ -5,6 +5,7 @@ local MvcView = {};
 function MvcView.extend(view)
     view._listenerMap = {};
 
+	--添加 pureMvc事件
     function view:addMvcListener(eventName, listener)
         eventName = string.upper(eventName)
 
@@ -25,10 +26,12 @@ function MvcView.extend(view)
         self._listenerMap = {}
     end
     
+    --面板派发事件
     function view:sendNotification(name, body)
 		MvcView.facade:sendNotification(name, body)
 	end
 	
+	--销毁
 	function view:dispose()
     	self:removeAllMvcEventListeners();
 		if self.class and type(self.class.dispose) == "function" then
@@ -43,6 +46,7 @@ function MvcView.extend(view)
     	end
     end
     
+    --view 注册 需要监听的控制器
     function view:initListener()
     	if type(self.listenerCommand) == "function" then
 	    	local cmds = self:listenerCommand()

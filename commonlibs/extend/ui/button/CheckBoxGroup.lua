@@ -1,5 +1,12 @@
+--复选按钮组
 local CheckBoxGroup = class("CheckBoxGroup", UI_RadioGroup)
 
+--[[
+	radios 复选按钮集合 
+	dir 界面方向 (横竖)
+	margin  按钮间距
+	defaultIndex 默认选中第几个
+]] 
 function CheckBoxGroup:ctor(radios, dir, margin, defaultIndex)
 	self:registerNodeEvent();
 	eventDispatcher.extend(self);

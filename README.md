@@ -5,8 +5,10 @@ lua framework for cocos
 
 details
 ---------------------------
-               	
-###		   commonlibs 
+###		   framework
+		   2dx quick 框架类库
+
+###		   commonlibs 	自写的一套框架
 		   -> init  	初始化类库引入类包	
 		   -> ccb  		cocosbuilder UI相关封装
 					   CCBCell  	cocosbuild 元素

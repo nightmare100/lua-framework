@@ -1,4 +1,4 @@
---change to 2.2.1 touchsprite
+--单选按钮的实现
 local RadioButton = class("RadioButton", function(frames, idx, proity, enabled, useSound)
 	local spr = display.newSprite();
 	spr.frames = frames

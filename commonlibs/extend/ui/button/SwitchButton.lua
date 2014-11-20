@@ -1,4 +1,4 @@
---CCControlSwitch TOLUA 后 有点问题 改用这个 灵活
+--CCControlSwitch TOLUA 后 有点问题 改用这个 灵活 自写开关按钮
 
 local SwitchButton = class("SwitchButton", function()
 	return display.newLayer();
@@ -41,6 +41,7 @@ function SwitchButton:ctor(onSprite, offSprite, bottomSprite, proity, file, useS
     self:checkButton()
 end
 
+--通过状态 设置UI
 function SwitchButton:checkButton()
 	if self.enabled then
 		self.onSprite:setVisible(true)
@@ -51,6 +52,7 @@ function SwitchButton:checkButton()
 	end
 end
 
+--触摸事件处理
 function SwitchButton:onTouch(event,x, y)
 	if event == "began" and self.touchRect:containsPoint(ccp(x, y)) then
 		return true;
@@ -63,6 +65,7 @@ function SwitchButton:onTouch(event,x, y)
 	return false;
 end
 
+--翻转按钮当前状态
 function SwitchButton:toggle()
 	if self.useSound then
 		SoundMgr.playSound("SIMPLE_CLICK")

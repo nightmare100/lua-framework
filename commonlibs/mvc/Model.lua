@@ -1,3 +1,6 @@
+--Proxy 管理
+--实现PROXY的 添加 删除 和 注册
+
 local Model = class("Model")
 
 Model.proxyMap={

@@ -1,3 +1,5 @@
+--
+
 local BaseScale9Sprite = class("BaseScale9Sprite", function(file, x, y)
 	local spr = display.newScale9Sprite(file,x , y)
 	if (x and y) == nil then

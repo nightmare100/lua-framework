@@ -1,3 +1,5 @@
+--复选按钮的实现
+
 local CheckBoxButton = class("CheckBoxButton", UI_RadioButton)
 
 function CheckBoxButton:onTouchRightNow()

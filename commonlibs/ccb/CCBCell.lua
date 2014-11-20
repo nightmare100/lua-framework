@@ -2,6 +2,7 @@
 
 local CCBCell = class("CCBCell");
 
+--初始化一个UI
 function CCBCell:ctor(ccbFile, ccbClass, proity)
 	self.viewData = {};
 	self:addViewListener();
@@ -19,6 +20,7 @@ function CCBCell:ctor(ccbFile, ccbClass, proity)
 	self:initData();
 end
 
+--UI的控制器 可重写
 function CCBCell:setData(info)
 	self.view.data = info
 	if type(self.view.setData) == "function" then
@@ -26,6 +28,7 @@ function CCBCell:setData(info)
 	end
 end
 
+--UI初始化状态操作
 function CCBCell:initData()
 
 end
@@ -43,7 +46,7 @@ function CCBCell:initView()
 end
 
 
-
+--解决UI不自动缩放的问题
 function CCBCell:resetPosition(children)
 	local scale = CCDirector:sharedDirector():getContentScaleFactor();
 	if children then
@@ -104,10 +107,12 @@ function CCBCell:diposeControler()
 	self.viewData = nil;
 end
 
+--retain
 function CCBCell:retain()
 	self.view:retain()
 end
 
+--release
 function CCBCell:release()
 	self.view:release()
 end

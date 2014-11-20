@@ -1,3 +1,5 @@
+--帧动画播放器 
+
 local MovieClip = class("MovieClip", function(frames, file, x, y, autoPlay, frameRate, loop, autoDispose)
 	local spr = cocoExtend.newSprite(file,x,y)
 	spr.frames = frames
@@ -18,6 +20,7 @@ function MovieClip:ctor()
 	self:registerNodeEvent();
 end
 
+--默认停止在第一帧
 function MovieClip:onEnter()
 	if not self.autoPlay then
 		self:setDisplayFrame(self.frames[1])
@@ -26,6 +29,7 @@ function MovieClip:onEnter()
 	end
 end
 
+--停止播放
 function MovieClip:stop()
 	if self.isPlaying then
 		self:stopAllActions();
@@ -33,6 +37,8 @@ function MovieClip:stop()
 	end
 end
 
+
+--播放
 function MovieClip:play()
 	if not self.isPlaying then
 		local animation = display.newAnimation(self.frames, self.frameRate)
@@ -56,6 +62,7 @@ function MovieClip:onAniComplete()
 	self:removeSelf(true);
 end
 
+--指定 停止到 第几帧
 function MovieClip:gotoAndStop(frame)
 	if (frame < self:getTotalFrame()) then
 		self:stop();
@@ -63,10 +70,12 @@ function MovieClip:gotoAndStop(frame)
 	end
 end
 
+--获取播放完整时间
 function MovieClip:getCompleteTime()
-	return getTotalFrame() * self.frameRate
+	return self:getTotalFrame() * self.frameRate
 end
 
+--获取帧数
 function MovieClip:getTotalFrame()
 	return table.getn(self.frames)
 end

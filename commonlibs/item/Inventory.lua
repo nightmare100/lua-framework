@@ -1,3 +1,5 @@
+--物品迭代器
+
 local Inventory = class("Inventory")
 
 function Inventory:ctor()
@@ -6,6 +8,7 @@ function Inventory:ctor()
 	self.itemDic[ItemType.ITEM_PROP] = {}
 end
 
+--加
 function Inventory:addItem(id, num, type)
 	if self.itemDic[type][id] then
 		self.itemDic[type][id].itemNum = self.itemDic[type][id].itemNum + num;
@@ -17,6 +20,7 @@ function Inventory:addItem(id, num, type)
 	
 end
 
+--删
 function Inventory:removeItem(id, num)
 	for k, v in pairs(self.itemDic) do
 		if self.itemDic[key][id] then
@@ -27,6 +31,7 @@ function Inventory:removeItem(id, num)
 	return nil;
 end
 
+--按ID取
 function Inventory:getItemById(id)
 	for k, v in pairs(self.itemDic) do
 		if self.itemDic[key] and self.itemDic[key][id] then
@@ -36,6 +41,7 @@ function Inventory:getItemById(id)
 	return nil;
 end
 
+--按类型区
 function Inventory:getItemByType(type)
 	local result = {};
 	for k, v in pairs(self.itemDic) do

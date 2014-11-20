@@ -16,9 +16,11 @@ function WebBitmapProxy:ctor(url, fileName, isRelative, proity, isSupportClick)
 		self:setPosition(self.rectInfo.x / scale, self.rectInfo.y / scale)
 	end
 	
+	-- c++ 扩展类 FileDownLoadManager 实现远程图片下载到可写目录
 	self.picName = FileDownLoadManager:saveFile(url, handler(self, self.onLoad));
 	self.proity = proity;
 
+	-- 增加点击事件
 	if isSupportClick then
 		self:addTouchEventListener(function(event, x, y)
 	        if event == "began" then
@@ -31,6 +33,7 @@ function WebBitmapProxy:ctor(url, fileName, isRelative, proity, isSupportClick)
 	end
 end
 
+--图片下载完成 进行显示
 function WebBitmapProxy:onLoad(event)
 	--checkAndroid 
 	if device.platform == "ios" then
@@ -57,6 +60,7 @@ function WebBitmapProxy:onTouchRightNow()
 	self:dispatchEvent({name = ExtendEvent.ON_CLICK})
 end
 
+--容器移除 时 移除图片缓存 及文件
 function WebBitmapProxy:onExit()
 	FileDownLoadManager:removeKey(self.picName);
 	self:removeAllEventListeners();

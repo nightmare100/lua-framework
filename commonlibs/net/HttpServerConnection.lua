@@ -52,7 +52,7 @@ function connection:requestMade(req, parm)
 end
 
 
-
+--收到数据
 function connection:onData(event)
 	local request = event.request
 	local requestName = event.requestName
@@ -108,6 +108,7 @@ function connection:onData(event)
 	end
 end
 
+--过滤请求(异常处理)
 function connection:filiterReq(req)
 	if not req then
 		return true;
@@ -120,6 +121,7 @@ function connection:filiterReq(req)
 	end
 end
 
+--超时 抛异常
 function connection:onTimeout()
 	self:dispatchEvent({name = ServerEvent.RequestError, code = 0, msg = "", reqName = ""})
 	self:removeAllEventListeners();

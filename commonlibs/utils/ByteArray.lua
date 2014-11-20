@@ -10,6 +10,9 @@ A sample: https://github.com/zrong/lua#ByteArray
 Creation 2013-11-14
 Last Modification 2014-01-01
 ]]
+
+--lua bytearray 封装 用于Socket 通信
+
 local ByteArray = class("ByteArray")
 
 ByteArray.ENDIAN_LITTLE = "ENDIAN_LITTLE"
