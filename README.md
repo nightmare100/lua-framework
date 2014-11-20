@@ -6,7 +6,7 @@ lua framework for cocos
 details
 ---------------------------
 ###		   framework
-		   2dx quick 框架类库
+		   2dx quick 基础框架(简化API)
 
 ###		   commonlibs 	自写的一套框架
 		   -> init  	初始化类库引入类包	
