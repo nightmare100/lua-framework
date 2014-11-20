@@ -53,3 +53,6 @@ details
 		   	->pbc 		谷歌PB协议支持
 		   	->tick		定时器类 和 事件格式解析器
 		   	->utils		各种辅助方法类封装
+			
+![image](https://github.com/nightmare100/lua-framework/blob/master/pic/how-to-use-mvc.jpg)
+![image](https://github.com/nightmare100/lua-framework/blob/master/pic/workwith-net-dispatch.jpg)
