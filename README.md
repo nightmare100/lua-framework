@@ -3,7 +3,8 @@ lua-framework
 
 lua framework for cocos
 
-			details
+details
+---------------------------
                	
 commonlibs 
 		   -> init  	初始化类库引入类包	
