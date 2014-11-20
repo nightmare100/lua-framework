@@ -1,3 +1,4 @@
+--弹窗面板 基类
 local BaseMessageView = class("BaseMessageView", DISPLAY_BASEVIEW)
 
 function BaseMessageView:ctor(needCloseBtn,customImg,customImgSlt)
