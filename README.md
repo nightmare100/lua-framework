@@ -3,7 +3,9 @@ lua-framework
 
 lua framework for cocos
 
-
+				
+				
+			
 
 commonlibs -> init  	初始化类库引入类包	
 		   -> ccb  		cocosbuilder UI相关封装
@@ -43,7 +45,6 @@ commonlibs -> init  	初始化类库引入类包
 		   			->CardGameParse 	socket 卡牌游戏 解析器
 		   			->JsonDataParse 	普通Json格式协议解析器
 		   			->PbDataParse		PB协议解析器
-
 		   		->socket		socket 收发器(实现观察者)
 		   		->HttpServerConnection		http 收发器(实现观察者)
 		   	->notify 	消息定义 对应NotifyManager
